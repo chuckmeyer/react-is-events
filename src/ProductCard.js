@@ -5,12 +5,15 @@ import aa from 'search-insights';
 
 function Product({ hit, insights }) {
   const url = `/products/${hit.objectID}`;
+  const query = `?queryID=${hit.__queryID}`;
   return (
     <div className="hit-card">
       <img src={hit.image_link} align="left" alt={hit.name} />
       <div className="hit-info">
         <div classNa me="hit-name">
-          <Link to={{ pathname: url }}
+          <Link
+            // to={{ pathname: url }}
+            to={{ pathname: url, search: query }}
             onClick={() => {
               insights('clickedObjectIDsAfterSearch', {
                 eventName: 'Search Result Clicked',
